@@ -7,12 +7,22 @@ var Types = keystone.Field.Types;
  */
 
 var Gallery = new keystone.List('Gallery', {
-	autokey: { from: 'name', path: 'key', unique: true }
+    autokey: {
+        from: 'name',
+        path: 'key',
+        unique: true
+    }
 });
 
 Gallery.add({
-	name: { type: String, required: true },
-	publishedDate: { type: Date, default: Date.now },
+    name: {
+        type: String,
+        required: true
+    },
+    publishedDate: {
+        type: Date,
+        default: Date.now
+    },
 
 });
 

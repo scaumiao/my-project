@@ -27,4 +27,9 @@ User.add({
     }
 });
 
+/**
+ * Relationships
+ */
+User.relationship({ ref: 'Post', path: 'post', refPath: 'author' });
+
 User.register();

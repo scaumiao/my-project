@@ -32,13 +32,14 @@ Post.add({
     }, //author是Post与User模型的关系
     author: {
         type: Types.Relationship,
-        ref: 'User'
+        ref: 'User',
+        index:true
     },
     createdAt: {
         type: Date,
         default: Date.now
     },
-    publishedAt: Date,
+    publishedAt: Types.Date,
     // image: {
     //     type: Types.CloudinaryImage
     // },

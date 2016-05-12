@@ -2,11 +2,22 @@ extends ../layouts/base
 
 //- block content 
 //-     h1 Hello World! Index View
+
+
+
+script(type='text/javascript').
+	function FormatDate (strTime) {
+		var date = new Date(strTime);
+		return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+	}	
+
+
 block content
-    .container: .row: .col-sm-10.col-sm-offset-1.col-md-8.col-md-offset-2
-        article
-            p: a(href='/') &larr; back to the index
-          
-              
-              h1= data.post.title
-          
+	.container.content-div
+		each post in data.posts
+			.header-title
+				a(href='#') #{post.title}
+				p.author #{post._.publishedAt.format('MMMM Do, YYYY')}  ,author by #{post.author.name.first}
+				p !{post.content.brief}
+//- p #{post._.publishedDate.format('MMMM Do, YYYY')}
+//- data.post.author.name.first

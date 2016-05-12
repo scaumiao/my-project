@@ -5,34 +5,24 @@ exports = module.exports = function(req, res) {
   var view = new keystone.View(req, res);
 
   var locals = res.locals;
-
+  //定义locals数据类型
   locals.section = 'post';
-	locals.filters = {
-		post: req.params.post
-	};
-	locals.data = {
+  locals.data = {
 		posts: []
 	};
 
+  // Load other posts
+  view.on('init', function(next) {
 
-	// Load the current post
-	view.on('init', function(next) {
+    //数据库查询语句
+    var q = keystone.list('Post').model.find().where('state', 'published').sort('-publishedAt').populate('author').limit('4');
+    //保存对象数据
+    q.exec(function(err, results) {
+      locals.data.posts = results;
+      next(err);
+    });
 
-		var q = keystone.list('Post').model.findOne({
-			state: 'published',
-			slug: locals.filters.post
-		}).populate('author categories');
-
-		q.exec(function(err, result) {
-			locals.data.post = result;
-			next(err);
-		});
-
-	});
-
-
-
-
+  });
 
 
   //render方法在web.js中指定的views目录下找寻模板

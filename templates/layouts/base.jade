@@ -14,7 +14,10 @@ html
         block head
     body
 
-        #header My Keystone Website
+        #header.navbar.navbar-default
+          .header-div.container
+            a(class='navbar-brand',href='#') 设计笔记
+    
 
         #body
 
@@ -24,8 +27,10 @@ html
 
             block content
 
-        #footer Powered by <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a>.
+        #footer
+          #nav.text-center
+            p Powered by <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a>.
 
-    script(src='/js/lib/jquery/jquery-1.10.2.min.js')
+    script(src='/js/jquery/jquery-2.1.4.min.js')
 
     block js
