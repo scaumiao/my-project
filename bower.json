@@ -1,0 +1,21 @@
+{
+  "name": "my-project",
+  "description": "bower",
+  "main": "web.js",
+  "authors": [
+    "scaumiao <scaumiao@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/scaumiao/my-project",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular":"^1.5.5"
+  }
+}

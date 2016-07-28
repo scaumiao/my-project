@@ -2,3 +2,5 @@
 require('./Users.js');
 require('./Post.js');
 require('./Gallery.js');
+require('./Question');
+// require('./QuestionType');
