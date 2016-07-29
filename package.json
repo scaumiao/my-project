@@ -1,5 +1,5 @@
 {
-  "name":"my-project",
+  "name": "my-project",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
@@ -9,6 +9,7 @@
     "dotenv": "^1.1.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "grunt": "^0.4.4",
     "grunt-express-server": "^0.4.17",
     "grunt-contrib-watch": "^0.6.1",

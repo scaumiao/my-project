@@ -4,7 +4,7 @@ var keystone = require('keystone'),
 
 var Question = new keystone.List('Question', {
   autokey: {
-    path: 'question',
+    path: 'key',
     from: 'title',
     unique: true
   },
@@ -16,7 +16,10 @@ var Question = new keystone.List('Question', {
 Question.add({
   title: {
     type: String,
-    require: true
+    require: true,
+    index: true,
+
+    unique: true
   },
   questionType: {
     label: '题目类型',

@@ -1,10 +1,10 @@
-//User模型
+//Test模型
 var keystone = require('keystone'),
   Types = keystone.Field.Types;
 
-var User = new keystone.List('User');
+var Test = new keystone.List('Test');
 
-User.add({
+Test.add({
   name: {
     type: Types.Name,
     require: true,
@@ -31,10 +31,10 @@ User.add({
 /**
  * Relationships
  */
-User.relationship({
+Test.relationship({
   ref: 'Post',
   path: 'post',
   refPath: 'author'
 });
 
-User.register();
+Test.register();
