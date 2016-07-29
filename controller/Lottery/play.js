@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-// var Post = keystone.list('AwardType').model;
+
 
 
 function play() {
@@ -11,8 +11,14 @@ function get_rand(list) {
 }
 
 function get_list() {
-
-  return 6;
+  return keystone.list('Post').model.find().where('state', 'published').exec(
+    function(err, posts) {
+      if (!err) {
+        console.log(posts);
+      } else {
+        console.log(err);
+      }
+    });
 }
 
 exports.get_list = get_list;
