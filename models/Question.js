@@ -67,15 +67,15 @@ Question.add({
   }
 });
 
-Question.schema.pre('save', function(next) {
-  keystone.list('Post').model.find().where('state', 'published').exec(
-    function(err, posts) {
-      if (!err) {
-        console.log(posts);
-      }
-      next();
-    });
-});
+// Question.schema.pre('save', function(next) {
+//   keystone.list('Post').model.find().where('state', 'published').exec(
+//     function(err, posts) {
+//       if (!err) {
+//         console.log(posts);
+//       }
+//       next();
+//     });
+// });
 
 //注册列表，并最终确定它的配置。
 Question.register();
