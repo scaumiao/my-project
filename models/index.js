@@ -7,3 +7,4 @@ require('./Question');
 require('./Test');
 require('./Award');
 require('./AwardType');
+require('./TestQuestion');

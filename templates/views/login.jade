@@ -1,0 +1,14 @@
+extend /layout
+
+block content
+  h1 Login
+  form(action="/myLogin", method="POST")
+    div
+      label(for="login") Email or Username
+      input(type="text", id="login", name="login", placeholder="Your email or username")
+    div
+      label(for="password") Password
+      input(type="password", id="password", name="password", placeholder="Your password")
+    if error
+      p #{error}
+    input(type="submit", value="Login")

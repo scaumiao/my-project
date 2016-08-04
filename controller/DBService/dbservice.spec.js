@@ -17,19 +17,18 @@ describe('check dbservice', function() {
       'name': 'my-project'
     });
     keystone.import('../../models');
-
-    console.log(mongoose.connection.conn);
-    // STATES
+    if (mongoose.connection._readyState === 0) {
+      mongoose.connection.open(function() {
+        console.log('connect');
+        done();
+      });
+    }
     done();
-
-  // mongoose.connection.open(function() {
-  //   done();
-  // });
   });
 
   afterAll(function(done) {
-
     mongoose.connection.close(function() {
+      console.log('close');
       done();
     });
   });
@@ -67,7 +66,7 @@ describe('check dbservice', function() {
     // Use keystone.list('Key') to access Lists and execute queries
     // as you would in your main application
     dbservice.findQuestion('Question', function(err, result) {
-      // console.log(result);
+      console.log(result);
       done();
     });
   });

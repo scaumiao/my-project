@@ -74,9 +74,13 @@ function openDB() {
 //查找question，封装
 function findQuestion(tableName, callback) {
   try {
+    var questions = [];
     var model = keystone.list(tableName).model;
     model.find().exec().then(function(result) {
-      console.log('result');
+      for (var i = 0; i < result.length; i++) {
+        // result[i].title
+      }
+      console.log('findQuestion');
       callback(null, result);
     });
   } catch (e) {

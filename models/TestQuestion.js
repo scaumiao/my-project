@@ -1,8 +1,9 @@
-// Question模型
+// TestQuestion模型
 var keystone = require('keystone'),
-  Types = keystone.Field.Types;
+  Types = keystone.Field.Types,
+  choose = [];
 
-var Question = new keystone.List('Question', {
+var TestQuestion = new keystone.List('TestQuestion', {
   autokey: {
     path: 'key',
     from: 'title',
@@ -10,10 +11,11 @@ var Question = new keystone.List('Question', {
   },
   map: {
     name: 'title'
-  }
-// drilldown: '题目类型'
+  },
+  sortable: true,
+  drilldown: 'answerOne'
 });
-Question.add({
+TestQuestion.add({
   title: {
     type: String,
     require: true,
@@ -21,52 +23,45 @@ Question.add({
 
     unique: true
   },
-  questionType: {
+  TestQuestionType: {
     label: '题目类型',
     type: Types.Select,
     options: '单选题,多选题,填空题,判断题',
     default: '单选题',
     index: true
   },
-  // 题目类型: {
-  //   type: Types.Relationship,
-  //   ref: 'QuestionType',
-  //   index: true
-  // },
-  // 答案: {
-  //   type: String,
-  //   index: true,
-  //   dependsOn: {
-  //     题目类型: '单选题'
-  //   },
-  //   collapse: true
-  // },
   choose: {
     label: '选项',
     type: Types.TextArray,
     default: [],
     dependsOn: {
-      questionType: ['单选题', '多选题']
+      TestQuestionType: ['单选题', '多选题']
     }
   },
   answerOne: {
     label: '答案',
-    type: String,
+    type: Types.Relationship,
+    ref: 'TestQuestion',
+    // options: choose,
     dependsOn: {
-      questionType: ['单选题', '填空题', '判断题']
+      TestQuestionType: ['单选题', '填空题', '判断题']
     }
   },
   answerMore: {
     label: '答案',
-    type: Types.TextArray,
-    default: [],
+    type: String,
     dependsOn: {
-      questionType: '多选题'
+      TestQuestionType: '多选题'
     }
   }
 });
 
-// Question.schema.pre('save', function(next) {
+TestQuestion.relationship({
+  path: 'TestQuestion.choose',
+  ref: 'TestQuestion',
+  refPath: 'answerOne'
+});
+// TestQuestion.schema.pre('save', function(next) {
 //   keystone.list('Post').model.find().where('state', 'published').exec(
 //     function(err, posts) {
 //       if (!err) {
@@ -77,4 +72,4 @@ Question.add({
 // });
 
 //注册列表，并最终确定它的配置。
-Question.register();
+TestQuestion.register();
