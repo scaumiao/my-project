@@ -5,11 +5,11 @@ var keystone = require('keystone'),
 var Register = new keystone.List('Register');
 
 Register.add({
-  name: {
-    type: Types.Name,
-    require: true,
-    index: true
-  },
+  // name: {
+  //   type: Types.Name,
+  //   require: true,
+  //   index: true
+  // },
   email: {
     type: Types.Email,
     initial: true,

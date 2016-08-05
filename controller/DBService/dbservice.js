@@ -9,7 +9,6 @@ function saveData(tableName, obj, callback) {
   // 保存提交
   try {
     var list = keystone.list(tableName);
-
     var item = new list.model();
     item.set(obj).save(function(err, result) {
       if (err) {
@@ -18,9 +17,10 @@ function saveData(tableName, obj, callback) {
         callback(null, result);
       }
     });
-  // console.log(item.save());
+
   } catch (e) {
-    callback(e);
+
+    callback('表名不存在');
   }
 // var list = keystone.list(tableName);
 // if (!list) {

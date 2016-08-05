@@ -8,3 +8,4 @@ require('./Test');
 require('./Award');
 require('./AwardType');
 require('./TestQuestion');
+require('./Register');

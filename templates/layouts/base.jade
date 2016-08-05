@@ -8,29 +8,27 @@ html
 
         title= title || 'My Keystone Website'
         link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
-        link(href="/styles/site.min.css", rel="stylesheet")
-
+        //- link(rel="stylesheet", href="/styles/site.min.css")
+        link(rel='stylesheet', href='/styles/stylesheets/bootstrap.min.css')
+        link(rel='stylesheet', href='/styles/stylesheets/style.css')
         block css
         block head
-    body
+    body(screen_capture_injected='true')
 
-        #header.navbar.navbar-default
-          .header-div.container
-            a(class='navbar-brand',href='#') 设计笔记
+
     
+        
 
-        #body
+        block intro
 
-            block intro
+        +flash-messages(messages)
 
-            +flash-messages(messages)
-
-            block content
+        block content
 
         #footer
           #nav.text-center
             p Powered by <a href='http://keystonejs.com', target='_blank'>KeystoneJS</a>.
 
-    script(src='/js/jquery/jquery-2.1.4.min.js')
+    //- script(src='/js/jquery/jquery-2.1.4.min.js')
 
     block js

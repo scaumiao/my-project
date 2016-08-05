@@ -5,7 +5,7 @@ var keystone = require('keystone'),
   importRoutes = keystone.importer(__dirname);
 
 //常用中间件
-// keystone.pre('routes', middleware.initErrorHandlers);
+keystone.pre('routes', middleware.initErrorHandlers);
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 
@@ -24,6 +24,26 @@ keystone.pre('render', middleware.flashMessages);
 //     res.err(err, title, message);
 // });
 
+keystone.set('500', function(err, req, res, next) {
+  // var title, message;
+  // if (err instanceof Error) {
+  //     message = err.message;
+  //     err = err.stack;
+  // }
+  // res.err(err, title, message);
+  //
+  console.log(err);
+  if (err) {
+    res.locals.message = '<div class="alert alert-danger" style="margin-bottom:20px;color:red;">' +
+      err + '</div>';
+    console.log('测试出现错误会不会跑这段代码');
+  }
+  next();
+
+
+
+});
+
 
 //加载路由
 var routes = {
@@ -36,5 +56,6 @@ exports = module.exports = function(app) {
   app.get('/', routes.views.index);
   app.get('/post', routes.views.post);
   app.get('/gallery', routes.views.gallery);
-  app.post('/myLogin', routes.views.myLogin);
+  app.get('/signup', routes.views.signup);
+  app.post('/signup', routes.views.signup);
 };
