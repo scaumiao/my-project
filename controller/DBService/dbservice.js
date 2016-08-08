@@ -12,7 +12,8 @@ function saveData(tableName, obj, callback) {
     var item = new list.model();
     item.set(obj).save(function(err, result) {
       if (err) {
-        callback(err);
+        console.log('出现错误');
+        callback('已存在用户', null);
       } else {
         callback(null, result);
       }
@@ -59,12 +60,21 @@ function findAllData(tableName, callback) {
 
 }
 
-function findOneData(tableName, callback) {
-  var model = keystone.list(tableName).model;
-  model.find().exec().then(function(result) {
-    console.log('result');
-  // callback(result);
-  });
+function findOneData(tableName, condition, callback) {
+  try {
+    var model = keystone.list(tableName).model;
+    var key = condition.key;
+    var value = condition.value;
+    model.find().where(key, value).exec(key, value).then(function(err, result) {
+      if (err) {
+        callback(err);
+      }
+      callback(null, result);
+    });
+  } catch (e) {
+    callback(e);
+  }
+
 }
 
 function openDB() {
@@ -89,6 +99,7 @@ function findQuestion(tableName, callback) {
 
 }
 
+exports.findOneData = findOneData;
 exports.findQuestion = findQuestion;
 exports.findAllData = findAllData;
 exports.saveData = saveData;

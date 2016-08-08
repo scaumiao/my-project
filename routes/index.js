@@ -5,7 +5,7 @@ var keystone = require('keystone'),
   importRoutes = keystone.importer(__dirname);
 
 //常用中间件
-keystone.pre('routes', middleware.initErrorHandlers);
+// keystone.pre('routes', middleware.initErrorHandlers);
 keystone.pre('routes', middleware.initLocals);
 keystone.pre('render', middleware.flashMessages);
 
@@ -24,25 +24,29 @@ keystone.pre('render', middleware.flashMessages);
 //     res.err(err, title, message);
 // });
 
-keystone.set('500', function(err, req, res, next) {
-  // var title, message;
-  // if (err instanceof Error) {
-  //     message = err.message;
-  //     err = err.stack;
-  // }
-  // res.err(err, title, message);
-  //
-  console.log(err);
-  if (err) {
-    res.locals.message = '<div class="alert alert-danger" style="margin-bottom:20px;color:red;">' +
-      err + '</div>';
-    console.log('测试出现错误会不会跑这段代码');
-  }
-  next();
-
-
-
-});
+// keystone.set('500', function(err, req, res, next) {
+//   // var title, message;
+//   // if (err instanceof Error) {
+//   //     message = err.message;
+//   //     err = err.stack;
+//   // }
+//   // res.err(err, title, message);
+//   //
+//   var view = new keystone.View(req, res);
+//   if (err) {
+//     var locals = res.locals;
+//     var message = '<div class="alert alert-danger" style="margin-bottom:20px;color:red;">' +
+//       err + '</div>';
+//     locals.message = '错误处理为何不会显示出来';
+//     console.log(locals);
+//     view.render('signup');
+//   }
+//
+//   next();
+//
+//
+//
+// });
 
 
 //加载路由

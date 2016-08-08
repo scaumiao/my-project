@@ -45,15 +45,15 @@ describe('check dbservice', function() {
     }, function(err, result) {
       // console.log(err);
       expect(result).to.be.undefined;
-      // expect(err).to.not.be.null;
 
+    // expect(err).to.not.be.null;
     });
     // expect(dbservice.saveData('Question', {
     //   'title': '题目测试3'
     // })).to.eql(true);
     // expect(dbservice.saveData('AwardTypea')).to.eql(true);
     dbservice.findAllData('Question', function(err, result) {
-      expect(result.length).to.eql(6);
+      expect(result.length).to.eql(2);
       // console.log(result.length);
       done();
     });
@@ -76,5 +76,18 @@ describe('check dbservice', function() {
   //   done();
   // });
 
+  it("test findOne function", function(done) {
+    dbservice.findOneData('Register', {
+      'key': 'email',
+      'value': 'user@keystonejs.com'
+    }, function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('findOne' + result);
+      }
+      done();
+    });
+  });
 
 });

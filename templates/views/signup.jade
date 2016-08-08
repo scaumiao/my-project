@@ -12,15 +12,16 @@
 //-     if error
 //-       p #{error}
 //-     input(type="submit", value="Signup")
-  
+
 extends ../layouts/base
 block css
 
 block content
   //- body(screen_capture_injected='true')
-  //- message
+  //- #{message}
+  !=message
   .container
-    form.col-sm-offset-4.col-sm-4.form-horizontal(role='form', method='post', onsubmit='return false')
+    form#form1.col-sm-offset-4.col-sm-4.form-horizontal(role='form', method='post', action='/signup')
         fieldset
           legend
           .panel.panel-default
@@ -31,7 +32,7 @@ block content
                 .input-group
                   span.input-group-addon
                     span.glyphicon.glyphicon-user
-                  input#username.form-control(type='text', name='username', placeholder='请输入用户名', required='')
+                  input#email.form-control(type='email', name='email', placeholder='请输入邮箱', required='')
               .form-group
                 .input-group
                   span.input-group-addon
@@ -41,41 +42,87 @@ block content
                 .input-group
                   span.input-group-addon
                     span.glyphicon.glyphicon-lock
-                  input#password1.form-control(type='text', name='password1', placeholder='请再次输入密码', required='')
+                  input#password1.form-control(type='text', name='password1', placeholder='请再次输入密码', required='',oninput="OnInput (event)" onpropertychange="OnPropChanged (event)")
               .form-group
-                button#register1.btn.btn-primary.btn-block(type='submit') 注册
+                button#register1.btn.btn-primary.btn-block(type='submit',disabled='true') 注册
               .form-group
                 button#login1.btn.btn-info.col-sm-2.col-sm-offset-10(type='button') 登录
     script(type='text/javascript', src='/styles/javascripts/jquery.min.js')
     script(type='text/javascript', src='/styles/javascripts/bootstrap.min.js')
+    script(type='text/javascript', src='/styles/javascripts/jquery.validate.js')
     script(type='text/javascript').
+      // Firefox, Google Chrome, Opera, Safari, Internet Explorer from version 9
+      function OnInput (event) {
+        if ($("#password").val() != event.target.value) {
+          $("#register1").attr('disabled', "true");
+        }else {
+          $("#register1").removeAttr('disabled');
+        }        
+      }
+      // Internet Explorer
+      function OnPropChanged (event) {
+        if (event.propertyName.toLowerCase () == "value") {
+          if ($("#password").val() != event.target.value) {
+            $("#register1").attr('disabled', "true");
+          }else {
+            $("#register1").removeAttr('disabled');
+          }
+        }
+      }
       $(function(){
+      //- $().ready(function() {
+      //-  $("#form1").validate();
+      //- });
+      //- $('form').each(function(i, el) {
+      //-   var $this = $(el);
+      //-   $this
+      //-     .data('validator', $this.validate())
+      //-     .delegate('input, select, textarea', 'input propertychange', function(e) {
+      //-       $(e.target).valid();
+      //-     });
+      //- });
       $("#login1").click(function(){
       location.href = 'login';
       });
-      $("#register1").click(function(){
-      var username = $("#username").val();
-      var password = $("#password").val();
-      var password1 = $("#password1").val();
-      if(password !== password1){
-      $("#password").css("border","1px solid red");
-      $("#password1").css("border","1px solid red");
-      }else if(password === password1){
-      var data = {"username":username,"password":password};
-      $.ajax({
-      url: '/signup',
-      type: 'post',
-      data: data,
-      success: function(data,status){
-      if(status == 'success'){
-      location.href = 'login';
-      }
-      },
-      error: function(data,err){
-      console.log(data);
-      location.href = 'signup';
-      }
-      });
-      }
+      //- var password = $("#password").val();
+      //- var password1 = $("#password1").val();
+      //- if (password!='' && password === password1) {
+      //-   $("#register1").attr('disabled', "false");
+      //-   $("#register1").removeAttr('disabled');
+      //- }
+      $('#email').bind('input propertychange', function() {
+        console.log('ceshi');
+      //- $('#content').html($(this).val().length + ' characters');
       });
       });
+    //- script(type='text/javascript').
+    //-   $(function(){
+    //-   $("#login1").click(function(){
+    //-   location.href = 'login';
+    //-   });
+    //-   $("#register1").click(function(){
+    //-   var username = $("#username").val();
+    //-   var password = $("#password").val();
+    //-   var password1 = $("#password1").val();
+    //-   if(password !== password1){
+    //-   $("#password").css("border","1px solid red");
+    //-   $("#password1").css("border","1px solid red");
+    //-   }else if(password === password1){
+    //-   var data = {"email":username,"password":password};
+    //-   $.ajax({
+    //-   url: '/signup',
+    //-   type: 'post',
+    //-   data: data,
+    //-   success: function(data,status){
+    //-   if(status == 'success'){
+    //-   location.href = 'login';
+    //-   }
+    //-   },
+    //-   error: function(data,err){
+    //-   console.log(err);
+    //-   location.href = 'signup';
+    //-   }
+    //-   });
+    //-   }
+    //-   });
+    //-   });

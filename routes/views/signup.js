@@ -8,7 +8,6 @@ exports = module.exports = function(req, res) {
 
   // Set locals
   locals.section = 'signup';
-
   // view.on('get',function(next){
   //
   // }).on('post',function(next){
@@ -22,20 +21,35 @@ exports = module.exports = function(req, res) {
     var shasum = crypto.createHash('md5');
     shasum.update(req.body.password);
     var d = shasum.digest('hex');
+    delete req.body.password1;
+    dbservice.saveData('Register', req.body, function(err, result) {
+      console.log(req.body);
+      if (err) {
+        // console.log(err);
+        // res.sendStatus(500);
+        // req.session.error = '已存在用户';
+        // view.render('signup', {
+        //   'message': "<div class='alert alert-danger' style='margin-bottom:20px;color:red;'>" +
+        //     '已存在用户' + '</div>'
+        // });
+        // var message = "<div class='alert alert-danger' style='margin-bottom:20px;color:red;'>" +
+        //   '已存在用户' + '</div>';
+        var message = {
+          'message': "<div class='alert alert-danger' style='margin-bottom:20px;color:red;'>" +
+            '已存在用户' + '</div>'
+        };
 
-    // dbservice.saveData('Register', req.body, function(err, result) {
-    //   if (err) {
-    //     // console.log(err);
-    //     req.session.error = '已存在用户';
-    //     view.render('signup');
-    //   }
-    //   view.render('index');
-    // });
-    locals.test = JSON.stringify({
-      'psw': d
+        view.render('signup', message);
+      } else {
+        view.render('index');
+      }
+
     });
-    res.sendStatus(500);
-    req.session.error = '用户存在';
+  // locals.message = JSON.stringify({
+  //   'psw': d
+  // });
+  // res.sendStatus(500);
+  // req.session.error = '用户存在';
   // view.render('test');
   }
 
