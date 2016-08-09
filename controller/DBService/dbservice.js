@@ -44,8 +44,24 @@ function deleteData(tableName) {
   var model = keystone.list(tableName).model;
 }
 
-function updateData(tableName) {
-  var model = keystone.list(tableName).model;
+function updateData(tableName, condition, update, callback) {
+  try {
+    var model = keystone.list(tableName).model;
+    // Model.findByIdAndUpdate = function(id, update, options, callback)
+    // Model.findOneAndUpdate = function(conditions, update, options, callback)
+    // Model.update = function update(conditions, doc, options, callback)
+    model.findOneAndUpdate(condition, update).exec().then(function(err, result) {
+      if (err) {
+        callback(err);
+      }
+      console.log(err);
+      callback(null, result);
+    });
+  } catch (e) {
+    callback(e);
+  }
+
+
 }
 
 function findAllData(tableName, callback) {
@@ -103,3 +119,4 @@ exports.findOneData = findOneData;
 exports.findQuestion = findQuestion;
 exports.findAllData = findAllData;
 exports.saveData = saveData;
+exports.updateData = updateData;

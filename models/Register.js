@@ -20,6 +20,11 @@ Register.add({
   password: {
     type: Types.Password,
     initial: true
+  },
+  inviteCount: {
+    type: Types.Number,
+    initial: true,
+    default: 0
   }
 });
 

@@ -40,6 +40,9 @@ describe('check question', function() {
       questions.push(obj);
     }
     var result = question.pick(questions, 5);
-    console.log(result);
+    for (var j = 0; j < result.length; j++) {
+      console.log(questions[result[j]]);
+    }
+
   });
 });

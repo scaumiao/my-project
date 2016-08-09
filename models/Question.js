@@ -66,14 +66,32 @@ Question.add({
   }
 });
 
-// Question.schema.pre('save', function(next) {
-//   keystone.list('Post').model.find().where('state', 'published').exec(
-//     function(err, posts) {
-//       if (!err) {
-//         console.log(posts);
-//       }
-//       next();
-//     });
+// Question.schema.pre('validate', function(next) {
+//   var result = true;
+//   while (result) {
+//     switch (this.questionType) {
+//       case '单选题':
+//         {
+//         for (var i = 0; i < this.choose.length; i++) {
+//           if (this.answerOne === this.choose[i]) {
+//             console.log('单选题成功');
+//             result = false;
+//             break;
+//           }
+//         }
+//         if (i >= this.choose.length) {
+//           console.log('单选题失败');
+//         }
+//         break;
+//         }
+//
+//       default:
+//         result = false;
+//         break;
+//     }
+//   }
+//
+//   next();
 // });
 
 //注册列表，并最终确定它的配置。
