@@ -70,12 +70,12 @@ describe('check invite', function() {
     var user2 = {
       'email': 'emails',
       'password': 'passwords',
-      'uuid': 'a0fef6505e0511e69e9097333ae91367'
+      'inviteUrl': 'pmbkmYez'
     };
     //inviteUrl返回邀请链接url
     console.log(invite.inviteUrl(user1));
     expect(invite.inviteUrl(user2)).to.eql(
-      'a0fef6505e0511e69e9097333ae91367');
+      'pmbkmYez');
   // expect(invite.inviteUrl()).to.eql('');
   });
 });
