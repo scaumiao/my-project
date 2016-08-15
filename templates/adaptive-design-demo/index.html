@@ -15,11 +15,20 @@
 </head>
 
 <body>
-    <div class="header" style="width:40%;height:60%;position:fixed;">
-        <div class="money">
-            <img src="images/money.png" alt="" style="top:30%;left:1000px" />
+    <div class="background" style="position:relative;width:100%;height:100%;">
+        <img src="images/background.png" alt="" style="width:100%;height:100%;margin:0px auto;" />
+        <div id="money">
+            <img src="images/money.png" />
         </div>
-        <div id="step" class="center-in-center">
+
+        <!-- <div class="money" style="width:40%;height:10%;position:absolute;left:30%;top:8%;">
+            <img src="images/money.png" alt="" style="width:100%;height:100%;" />
+        </div> -->
+        <!--         <div class="header" style="width:40%;height:60%;position:absolute;left:35%;top:8%;"> -->
+        <!--     <div class="money">
+    <img src="images/money.png" alt="" style="width:100%;height:100%;" />
+</div> -->
+        <div id="step">
             <div class="step-btn">
                 <img src="images/index/stepbtn/1.png" />
             </div>
@@ -33,9 +42,35 @@
                 <img src="images/index/stepbtn/4.png" />
             </div>
         </div>
-    </div>
+        <div id="start">
+            <!--       <a href="http://www.baidu.com" style="cursor:url(images/index/hover.png),auto"> -->
 
-    <div class="content">
+            <a href="http://www.baidu.com">
+                <button class="yellow" type="button" name="button" style="">Let's go!</button>
+            </a>
+
+
+        </div>
+        <div id="award">
+            <div class="award-btn">
+                <img src="images/index/award/0.png" />
+            </div>
+            <div class="award-btn">
+                <img src="images/index/award/1.png" />
+            </div>
+            <div class="award-btn">
+                <img src="images/index/award/2.png" />
+            </div>
+            <div class="award-btn">
+                <img src="images/index/award/3.png" />
+            </div>
+            <div class="award-btn">
+                <img src="images/index/award/4.png" />
+            </div>
+        </div>
+
+
+    <div id="content">
         <div class="step1">
             <img src="images/index/stepnote/step1.png" alt="" />
         </div>
@@ -49,63 +84,16 @@
             <img src="images/index/stepnote/step4.png" alt="" />
         </div>
     </div>
-    <!--     <div class="step4">
-    <img src="images/index/stepnote/step4.png" alt="" />
-</div>
-<div class="step4">
-    <img src="images/index/stepnote/step4.png" alt="" />
-</div> -->
-    <!-- <img src="images/money.jpg" alt="" /> -->
-    <!--   <div id="step">
-      <div class="step-btn">
-          <img src="images/step1.png" />
-          <p class="number">
-              step1
-          </p>
-          <p class="title">
-              登陆/注册
-          </p>
-      </div>
-      <div class="step-btn">
-          <img src="images/step1.png" />
-          <p class="number">
-              step2
-          </p>
-          <p class="title">
-              开始答题
-          </p>
-      </div>
-      <div class="step-btn">
-          <img src="images/step1.png" />
-          <p class="number">
-              step3
-          </p>
-          <p class="title">
-              转盘抽大奖
-          </p>
-      </div>
-      <div class="step-btn">
-          <img src="images/step1.png" />
-          <p class="number">
-              step4
-          </p>
-          <p class="title">
-              邀请朋友3位
-          </p>
-          <p class="small">
-              再赢得抽奖机会
-          </p>
-      </div>
-      <br style="clear:both;" />
-  </div>
-  <div id="start">
-      <button class="yellow" type="button" name="button">Let's go!</button>
-  </div>
-   -->
-    <!-- <div id="formbackground" style="padding:0px;margin:0% 15 0% 15%;">
-        <img src="images/body-bg.jpg" style="z-index:-1;" width="100%" height:auto/>
-    </div> -->
+            <div id="foot">
+            <!-- <input type="image" src="images/index/button.png" ></input> -->
+            <input type="button" style="width:310px;height:120px;background: url(images/index/button.png);background-repeat:no-repeat;font-size: 20px;text-align: center;" value="Let's go!"></input>
+            <!-- <input class="foot-btn yellow" type="button" src="images/index/button.png" value="aaa"></input> -->
+        <!-- <button class="yellow foot-btn" type="button" name="button"><p style="font-size: 30px">aaaa</p></button> -->
+    </div>
+    </div>
+
 </body>
+
 <!--   <script type="text/javascript">
 $(function(){
     $('#formbackground').height($(window).height());
