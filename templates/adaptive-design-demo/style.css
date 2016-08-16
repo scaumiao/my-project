@@ -21,7 +21,7 @@ img {
 }
 
 /* set html5 elements to block */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { 
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
@@ -29,7 +29,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 GENERAL STYLING
 *************************************************************************************/
 body {
-	background: #0d1424 url(images/body-bg.jpg) no-repeat center top;
+/* 	background: #0d1424 url(images/body-bg.jpg) no-repeat center top; */
+		background: #0d1424 url(images/background.png) no-repeat center top;
 	font: .81em/150% Arial, Helvetica, sans-serif;
 	color: #666;
 }
@@ -87,7 +88,7 @@ input[type=search] {
 	-webkit-appearance: none;
 	outline: none;
 }
-input[type="search"]::-webkit-search-decoration, 
+input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
 	display: none;
 }
@@ -274,7 +275,7 @@ SIDEBAR
 }
 .widgettitle {
 	margin: 0 0 5px;
-	padding: 0;	
+	padding: 0;
 }
 .widget ul {
 	margin: 0;
