@@ -173,7 +173,7 @@ p {
 .yellow {
     /*color: black;*/
     background: #F6CE1A;
-    cursor: url(images/index/hover.png), auto
+    cursor: url(../images/index/hover.png), auto
 }
 
 /* 中间content */
@@ -189,27 +189,103 @@ p {
 #content .step1, .step2, .step3, .step4 {
     position: relative;
     left: 20%;
-    width: 30%;
+    width: 80%;
+  float:left;
 }
 #content img {
-    width: 100%;
-    height: 100%;
+    width: 40%;
+    height: 50%;
+
 }
+#content .step-div {
+    float:right;
+    width: 55%;
+    height: 60%;
+    left:200px;
+}
+/* step1 */
+
+#content .step1 img{
+  float:left;
+  width:40%;
+}
+#content .step1 .step-div{
+  /* float:left; */
+}
+/* step2 */
 #content .step2 {
-    left: 60%;
-    margin-top: -10%;
+    margin-top: -25%;
 }
-#content .step3 {
-    left: 0;
-    width: 50%;
-    margin-top: -10%;
-    /*height: 40%;*/
+#content .step2 img{
+  float:right;
+  width:50%;
 }
-#content .step4 {
+#content .step2 .step-div{
+  position: absolute;
+  left:0;
+  float:left;
+  top:40%;
+}
+/* #content .step4 {
     left: 50%;
     width: 50%;
 }
+#content .step4 img{
+  width:70%;
+} */
+/* step3 */
+#content .step3{
 
+  left: 0;
+  width: 100%;
+  margin-top: -10%;
+}
+#content .step3 img{
+  float: left;
+  width: 40%;
+}
+
+.step3 .step-div .award-introduce .price {
+    position: absolute;
+    right: 20px;
+}
+.step3 .step-div .award-introduce{
+  position:relative;
+  width:80%;
+  padding: 1%;
+  /* height: 40%; */
+}
+.step3 .step-div .award-introduce .award-type {
+    width: 7%;
+    height: 10%;
+    /* float: left; */
+}
+.step3 .step-div .award-introduce .award-name {
+    position: relative;
+    left: 1%;
+
+}
+.step3 .step-div .award-introduce .yuan{
+  position: absolute;
+  right: 58px;
+}
+
+/* step4 */
+#content .step4 {
+margin-top: -10%;
+}
+#content .step4 img{
+  float:right;
+  position: relative;
+  width:55%;
+  right:10%;
+}
+#content .step4 .step-div{
+  float:left;
+  position: absolute;
+  left:0;
+  top:30%;
+}
 /* 底部按钮 */
 
 #foot {
@@ -229,7 +305,7 @@ p {
     background-size: 100% 100%;
     /*width: 200px;
     height: 100px;*/
-    background-image: url(images/index/button.png);
+    background-image: url(../images/index/button.png);
     /*    -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
     border-radius: 50%;*/
@@ -279,6 +355,9 @@ p {
     }
 }
 
+@media screen and (max-width:1024px){
+
+}
 /* @media screen and (max-width: 650px) {
     body {
         background-size: 100% 100%;
