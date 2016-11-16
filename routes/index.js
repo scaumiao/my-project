@@ -51,7 +51,8 @@ keystone.pre('render', middleware.flashMessages);
 
 //加载路由
 var routes = {
-  views: importRoutes('./views')
+  views: importRoutes('./views'),
+  api: importRoutes('./api'),
 };
 
 //绑定路由，将index路由控制器绑定到根url‘/’的GET请求上
@@ -62,4 +63,9 @@ exports = module.exports = function(app) {
   app.get('/gallery', routes.views.gallery);
   app.get('/signup', routes.views.signup);
   app.post('/signup', routes.views.signup);
+
+  app.all('/api*', [keystone.middleware.api]);
+  app.get('/api/getPage', routes.api.getPage);
+  app.get('/api/getSource', routes.api.getSource);
+
 };
