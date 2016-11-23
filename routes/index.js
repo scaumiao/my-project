@@ -67,5 +67,16 @@ exports = module.exports = function(app) {
   app.all('/api*', [keystone.middleware.api]);
   app.get('/api/getPage', routes.api.getPage);
   app.get('/api/getSource', routes.api.getSource);
+  app.get('/api/getHtml', routes.api.getHtml);
+  app.get('/api/getSource', routes.api.getSource);
+  app.get('/api/scraperUtil', routes.api.scraperUtil);
+  app.get('/api/getSource', routes.api.getSource);
+  app.get('/api/queueUtil', routes.api.queueUtil);
+  app.get('/api/proxyTest', routes.api.proxyTest);
 
+  // 反向代理的路由
+  app.get('/api/proxyRoute', routes.api.proxyRoute);
+
+  app.get('/api/try', routes.api.try);
+  app.get('/api/proxy', routes.api.proxy);
 };
