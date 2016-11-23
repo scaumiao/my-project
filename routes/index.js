@@ -59,10 +59,7 @@ var routes = {
 //应该在根控制器下面用app.get、app.post 或 app.all 将其它路由控制器添加到程序中。
 exports = module.exports = function(app) {
   app.get('/', routes.views.index);
-  app.get('/post', routes.views.post);
-  app.get('/gallery', routes.views.gallery);
-  app.get('/signup', routes.views.signup);
-  app.post('/signup', routes.views.signup);
+
 
   app.all('/api*', [keystone.middleware.api]);
   app.get('/api/getPage', routes.api.getPage);
